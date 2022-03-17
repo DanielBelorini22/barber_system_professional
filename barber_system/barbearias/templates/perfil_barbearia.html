@@ -1,0 +1,34 @@
+{% extends 'base_barbearias.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Perfil do Barbearia{% endblock title %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="{{ barbearia.logo.url }}" style="width: 100%" alt="">
+            <div class="caption">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <ul class="list-group">
+            <li class="list-group-item">Razão Social: {{ barbearia.razao_social }}</li>
+            <li class="list-group-item">Nome Fantasia: {{ barbearia.nome_fantasia }}</li>
+            <li class="list-group-item">CNPJ: {{ barbearia.cnpj }}</li>
+            <li class="list-group-item">E-mail: {{ barbearia.email }}</li>
+            <li class="list-group-item">Horário de atendimento: {{ barbearia.horario_atendimento }}</li>
+            <li class="list-group-item">Facebok: {{ barbearia.facebook }}</li>
+            <li class="list-group-item">Twitter: {{ barbearia.twitter }}</li>
+            <li class="list-group-item">Instagram: {{ barbearia.instagram }}</li>
+        </ul>
+    </div>
+</div>
+
+{% include 'cortes_cabelo.html' %}
+
+{% endblock content %}
