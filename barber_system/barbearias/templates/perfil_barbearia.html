@@ -22,9 +22,14 @@
             <li class="list-group-item">CNPJ: {{ barbearia.cnpj }}</li>
             <li class="list-group-item">E-mail: {{ barbearia.email }}</li>
             <li class="list-group-item">Horário de atendimento: {{ barbearia.horario_atendimento }}</li>
-            <li class="list-group-item">Facebok: {{ barbearia.facebook }}</li>
-            <li class="list-group-item">Twitter: {{ barbearia.twitter }}</li>
-            <li class="list-group-item">Instagram: {{ barbearia.instagram }}</li>
+            <li class="list-group-item p-3">
+                <a href="{{ barbearia.facebook }}" id="id_facebook"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                <a href="{{ barbearia.twitter }}" id="id_twitter"
+                   style="margin-left: 10px; color: #00acee;"><i class="fa-brands fa-twitter fa-2x"></i></a>
+                <a href="{{ barbearia.instagram }}" id="id_instagram" style="margin-left: 10px; color: #F56040"><i
+                        class="fa-brands fa-instagram fa-2x"></i></a>
+                <a href="{{ barbearia.youtube }}" id="id_youtube" style="margin-left: 10px; color: #FF0000"><i class="fa-brands fa-youtube fa-2x"></i></a>
+            </li>
         </ul>
     </div>
 </div>
