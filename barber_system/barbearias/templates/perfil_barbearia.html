@@ -5,10 +5,12 @@
 {% block title %}Perfil do Barbearia{% endblock title %}
 
 {% block content %}
-<div class="row mt-5">
+<div class="row mt-5" id="id_perfil_barbearia" style="padding: 40px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border-radius:
+0.25rem !important; box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.14) !important;">
     <div class="col-md-4">
         <div class="thumbnail">
-            <img src="{{ barbearia.logo.url }}" style="width: 100%" alt="">
+            <img src="{{ barbearia.logo.url }}" style="width: 100%"
+                 alt="">
             <div class="caption">
 
             </div>
@@ -23,12 +25,13 @@
             <li class="list-group-item">E-mail: {{ barbearia.email }}</li>
             <li class="list-group-item">Horário de atendimento: {{ barbearia.horario_atendimento }}</li>
             <li class="list-group-item p-3">
-                <a href="{{ barbearia.facebook }}" id="id_facebook"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                <a href="{{ barbearia.facebook }}" id="id_facebook" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
                 <a href="{{ barbearia.twitter }}" id="id_twitter"
-                   style="margin-left: 10px; color: #00acee;"><i class="fa-brands fa-twitter fa-2x"></i></a>
-                <a href="{{ barbearia.instagram }}" id="id_instagram" style="margin-left: 10px; color: #F56040"><i
+                   style="margin-left: 10px; color: #00acee;" target="_blank"><i class="fa-brands fa-twitter fa-2x"></i></a>
+                <a href="{{ barbearia.instagram }}" id="id_instagram" style="margin-left: 10px; color: #F56040" target="_blank"><i
                         class="fa-brands fa-instagram fa-2x"></i></a>
-                <a href="{{ barbearia.youtube }}" id="id_youtube" style="margin-left: 10px; color: #FF0000"><i class="fa-brands fa-youtube fa-2x"></i></a>
+                <a href="{{ barbearia.youtube }}" id="id_youtube" style="margin-left: 10px; color: #FF0000" target="_blank"><i
+                        class="fa-brands fa-youtube fa-2x"></i></a>
             </li>
         </ul>
     </div>
