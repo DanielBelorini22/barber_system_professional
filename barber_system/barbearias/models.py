@@ -36,10 +36,11 @@ class CortesCabelo(models.Model):
         ('alto_degrade', 'Alto degrade'),
     )
 
+    descricao = models.CharField('Descrição', max_length=50, null=False)
     modelo = models.CharField('Modelo', max_length=50, null=False, choices=CORTES_CHOICES)
     preco = models.FloatField('Preço', null=False)
     barbearia = models.ForeignKey(Barbearia, on_delete=models.CASCADE)
     foto = models.ImageField('Foto', upload_to='images')
 
     def __str__(self):
-        return self.modelo
+        return self.descricao

@@ -31,8 +31,13 @@ def listar_barbearia(request, template_name='barbearia_list.html'):
 
 def perfil_barbearia(request, pk, template_name="perfil_barbearia.html"):
     barbearia = get_object_or_404(Barbearia, pk=pk)
-    cortes = get_object_or_404(CortesCabelo, pk=pk)
-    return render(request, template_name, {'barbearia': barbearia, 'cortes': cortes})
+    cortes = CortesCabelo.objects.filter(barbearia=pk)
+
+    context = {
+        'barbearia': barbearia,
+        'cortes': cortes
+    }
+    return render(request, template_name, context=context)
 
 
 def home(request, template_name="home.html"):

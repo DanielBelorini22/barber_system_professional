@@ -37,6 +37,22 @@
     </div>
 </div>
 
-{% include 'cortes_cabelo.html' %}
+<div class="row mt-5">
+    {% for corte in cortes %}
+    <div class="col-md-3">
+        <div class="cortes mt-5 mb-5">
+
+            <div class="card m-2 p-0" style="width: 19rem; box-shadow: 4px 8px 15px rgba(0,0,0,0.42); border: none">
+                <img src="{{ corte.foto.url }}" class="card-img-top" alt="..." width="100%" height="320">
+                <div class="card-body" style="height: 150px">
+                    <p class="card-text" style="text-align: center; height: 50px">{{ corte.descricao }}</p>
+                    <p class="card-text text-success" style="font-size: 20px">R$ {{ corte.preco }}0</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock content %}
