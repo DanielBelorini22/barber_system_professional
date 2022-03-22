@@ -2,22 +2,17 @@
 
 - Programa web para agendamento de horários em barbearias.
 
-
 # Requisitos Minimos:
-
 
 01 - Instalar o Visual Studio Code (https://code.visualstudio.com/download)
 
 02 - Instalar o Python no windows (https://www.python.org/downloads/)
 
-03 - Instalar o PostgreSQL no windowns (https://www.postgresql.org/download/)
+03 - Instalar o MYSQL no windowns (https://dev.mysql.com/downloads/installer/)
 
 04 - Instalar o Git no windows (https://git-scm.com/)
 
-
-
 # Preparando ambiente no Visual Code Studio:
-
 
 01 - Instalar extensão do Python
 
@@ -29,16 +24,30 @@
 
 05 - Instalar extensão do Portuguese (Brazil) Language Pack for Visual Studio Code
 
-
-
 # Clonando o projeto do GitHub:
-
 
 - No terminal do Visual Studio Code executar os códigos:
 
+01 - https://github.com/DanielBelorini22/barber_system_professional.git
 
-01 - git init
+02 - cd barber_system_professional
 
-02 - git clone https://github.com/DanielBelorini22/Barber_VS
+03 - python -m venv venv
 
-03 - git 
+04 - .\venv\Scripts\activate
+
+Obs - (No Visual Studio Code selecione o interpretador venv criado prescionando a tecla F1 e marcando a opção venv recomendada)
+
+05 - Com o venv ativado... python -m pip install --upgrade pip
+
+06 - pip install -r requirements.txt
+
+# Configurando o banco de dados:
+
+- Criando banco de dados
+
+01 - create database barber_system;
+
+02 - use barber_system;
+
+03 - show tables;
