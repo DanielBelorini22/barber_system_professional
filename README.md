@@ -52,7 +52,7 @@ Obs - (No Visual Studio Code selecione o interpretador venv criado prescionando 
 
 03 - show tables;
 
-# Aplicando o banco de dados criado no django
+# Aplicando no Django o banco de dados criado no MySQL Workbench
 
 01 - Abra o arquivo 'settings' no diretório: barber_system_professional -> barber_system -> barber_system -> settings.py
 
@@ -63,6 +63,7 @@ Obs - (No Visual Studio Code selecione o interpretador venv criado prescionando 
 obs: Em Password deverá ser digitada a mesma senha de quando instalou o MySQL na máquina.
 
 DATABASES = {
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'barber_system',
@@ -79,7 +80,8 @@ DATABASES = {
 
 - Após clonar o projeto do Git e criar e configurar o banco de dados, execute os seguintes códigos no terminal do Visual Studio Code:
 
-01 - Verifique o diretório atual na linha do terminal, deverá estar em 'barber_system_professional'. Caso não tiver digite cd barber_system_professional/barber_system
+01 - Verifique o diretório atual na linha do terminal, deverá estar em 'barber_system_professional/barber_system'. Caso não tiver digite cd 
+barber_system_professional/barber_system
 
 02 - digite python manage.py migrate
 
