@@ -52,7 +52,7 @@ Obs - (No Visual Studio Code selecione o interpretador venv criado prescionando 
 
 03 - show tables;
 
-# Aplicando no Django o banco de dados criado no MySQL Workbench
+# Aplicando no Django o banco de dados recém criado
 
 01 - Abra o arquivo 'settings' no diretório: barber_system_professional -> barber_system -> barber_system -> settings.py
 
