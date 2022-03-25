@@ -2,7 +2,7 @@
 
 - Programa web para agendamento de horários em barbearias.
 
-# Requisitos Minimos:
+# Requisitos Mínimos:
 
 01 - Instalar o Visual Studio Code (https://code.visualstudio.com/download)
 
