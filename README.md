@@ -28,7 +28,7 @@
 
 - No terminal do Visual Studio Code executar os códigos:
 
-01 - https://github.com/DanielBelorini22/barber_system_professional.git
+01 - git clone https://github.com/DanielBelorini22/barber_system_professional.git
 
 02 - cd barber_system_professional
 
@@ -42,7 +42,7 @@ Obs - (No Visual Studio Code selecione o interpretador venv criado prescionando 
 
 06 - pip install -r requirements.txt
 
-# Configurando o banco de dados:
+# Configurando o banco de dados no MySQL Workbench:
 
 - Criando banco de dados
 
@@ -51,3 +51,38 @@ Obs - (No Visual Studio Code selecione o interpretador venv criado prescionando 
 02 - use barber_system;
 
 03 - show tables;
+
+# Aplicando o banco de dados criado no django
+
+01 - Abra o arquivo 'settings' no diretório: barber_system_professional -> barber_system -> barber_system -> settings.py
+
+02 - No arquivo 'settings' aberto localize 'DATABASES'. (CTRL+F para abrir a busca no código)
+
+03 - A configuração do 'DATABASES' será parecida com essa:
+
+obs: Em Password deverá ser digitada a mesma senha de quando instalou o MySQL na máquina.
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'barber_system',
+        'USER': 'root',
+        'PASSWORD': 'DigiteAquiSuaSenha',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
+- Após digitar sua senha, pressione CTRL+S para salvar as alterações no arquivo.
+
+# Rodando o projeto localmente
+
+- Após clonar o projeto do Git e criar e configurar o banco de dados, execute os seguintes códigos no terminal do Visual Studio Code:
+
+01 - Verifique o diretório atual na linha do terminal, deverá estar em 'barber_system_professional'. Caso não tiver digite cd barber_system_professional/barber_system
+
+02 - digite python manage.py migrate
+
+03 - digite python manage.py runserver
+
+04 - Ao digitar o 'runserver' será executado o servidor local com um link para abrir no navegador o projeto (Starting development server at http://127.0.0.1:8000/). Clique no link ou copie e cole no navegador.
