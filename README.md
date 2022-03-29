@@ -88,3 +88,5 @@ barber_system_professional/barber_system
 03 - digite python manage.py runserver
 
 04 - Ao digitar o 'runserver' será executado o servidor local com um link para abrir no navegador o projeto (Starting development server at http://127.0.0.1:8000/). Clique no link ou copie e cole no navegador.
+
+Hiuri
