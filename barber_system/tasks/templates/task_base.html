@@ -17,7 +17,7 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-<div class="container-fluid">
+<div>
     <nav class="navbar sticky-top navbar-light bg-light fixed-top">
         <div class="container-fluid">
             {% if user.is_authenticated %}
@@ -78,7 +78,7 @@
         </div>
     </nav>
 
-    <main>
+    <main class="container-fluid">
         {% block content %}{% endblock %}
     </main>
 
