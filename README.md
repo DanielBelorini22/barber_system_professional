@@ -52,6 +52,20 @@ Obs - (No Visual Studio Code selecione o interpretador venv criado prescionando 
 
 03 - show tables;
 
+# Criando arquivo .env:
+
+01 - Na pasta barber_system_professional, crie um novo arquivo .txt com o nome .env (Manter o ponto na frente)
+
+02 - O mesmo após criado deverá ser configurado ficar semelhante a este:
+
+    SECRET_KEY=django-insecure-qvdn8a@+s%+zn%v%&55d!2t9a)k*bv+8)rz5+z5l%fmb4=29r&
+    DEBUG=True
+    DATABASE_NAME=barber_system
+    DATABASE_USERNAME=root
+    DATABASE_PASSWORD=root
+    DATABASE_HOST=localhost
+    DATABASE_PORT=3306
+
 # Aplicando no Django o banco de dados recém criado
 
 01 - Abra o arquivo 'settings' no diretório: barber_system_professional -> barber_system -> barber_system -> settings.py
@@ -66,11 +80,11 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'barber_system',
-        'USER': 'root',
-        'PASSWORD': 'DigiteAquiSuaSenha',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': config("DATABASE_NAME"),
+        'USER': config("DATABASE_USERNAME"),
+        'PASSWORD': config("DATABASE_PASSWORD"),
+        'HOST': config("DATABASE_HOST"),
+        'PORT': config("DATABASE_PORT", cast=int)
     }
 }
 
@@ -88,5 +102,3 @@ barber_system_professional/barber_system
 03 - digite python manage.py runserver
 
 04 - Ao digitar o 'runserver' será executado o servidor local com um link para abrir no navegador o projeto (Starting development server at http://127.0.0.1:8000/). Clique no link ou copie e cole no navegador.
-
-Hiuri
