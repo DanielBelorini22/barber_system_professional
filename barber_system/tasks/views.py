@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-from .models import Task
+from .models import Task, Corte
 from .forms import CorteForm
 
 import datetime
@@ -131,11 +131,13 @@ def dash_board(request, template_name="tasks/dashboard.html"):
 
 @login_required
 def tipo_cortes(request, template_name="tipo_cortes/list.html"):
-    return render(request, template_name, {'name': 'aa'})
+    tipos_cortes = Corte.objects.all()
+
+    return render(request, template_name, {'tipos': tipos_cortes})
 
 
 @login_required
-def novo_tipo_cortes(request, template_name="tipo_cortes/addcorte.html"):
+def novo_tipo_cortes(request, template_name="tipo_cortes/add_edit_corte.html"):
     if request.method != 'POST':
         form = CorteForm()
         return render(request, template_name, {'form': form})
@@ -150,3 +152,23 @@ def novo_tipo_cortes(request, template_name="tipo_cortes/addcorte.html"):
     messages.info(request, 'Corte criado com sucesso!')
 
     return redirect('/tarefas/cortes')
+
+
+@login_required
+def editar_tipo_cortes(request, pk, template_name="tipo_cortes/add_edit_corte.html"):
+    corte = get_object_or_404(Corte, pk=pk)
+    form = CorteForm(instance=corte)
+
+    if request.method == 'POST':
+        form = CorteForm(request.POST, instance=corte)
+
+        if form.is_valid():
+            corte.save()
+
+            messages.info(request, 'Corte editado com sucesso!')
+
+            return redirect('/tarefas/cortes')
+        else:
+            return render(request, template_name, {'form': form, 'corte': corte})
+    else:
+        return render(request, template_name, {'form': form, 'corte': corte})

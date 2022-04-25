@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.task_list, name='task-list'),
     path('cortes/', views.tipo_cortes, name='tipo-cortes'),
     path('cortes/novo/', views.novo_tipo_cortes, name='tipo-cortes-novo'),
+    path('cortes/editar/<int:pk>/', views.editar_tipo_cortes, name='tipo-cortes-editar'),
     path('dashboard/', views.dash_board, name='dashboard'),
     path('task/<int:pk>/', views.task_view, name='task-view'),
     path('newtask/', views.new_task, name='new-task'),
