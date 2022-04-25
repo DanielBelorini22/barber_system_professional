@@ -40,8 +40,8 @@ class Corte(models.Model):
         ('sobrancelha', 'Sobrancelha'),
         ('corte_sobrancelha', 'Corte e sobrancelha'),
         ('corte_barba', 'Corte e barba'),
-        ('barba_sobrancelha', 'Barba e Sobrancelha'),
-        ('corte_barba_sobrancelha', 'Corte,barba e sobrancelha'),
+        ('barba_sobrancelha', 'Barba e sobrancelha'),
+        ('corte_barba_sobrancelha', 'Corte, barba e sobrancelha'),
     )
 
     nome = models.CharField('Nome', max_length=255, null=False, blank=False, choices=NOME_CHOICES)
