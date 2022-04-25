@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-from .models import Task
-from .forms import TaskForm
+from .models import Task, Corte
+from .forms import CorteForm
 
 import datetime
 
@@ -13,18 +13,18 @@ import datetime
 # Create your views here.
 
 @login_required
-def taskList(request, template_name="tasks/list.html"):
+def task_list(request, template_name="tasks/list.html"):
     search = request.GET.get('search')
-    filter = request.GET.get('filter')
+    filter_query = request.GET.get('filter')
 
     if search:
         tasks = Task.objects.filter(title__icontains=search, user=request.user)
 
-    elif filter:
-        tasks = Task.objects.filter(done=filter, user=request.user)
+    elif filter_query:
+        tasks = Task.objects.filter(done=filter_query, user=request.user)
 
     else:
-        tasks_list = Task.objects.all().order_by('-created_at').filter(user=request.user)
+        tasks_list = Task.objects.filter(user=request.user).order_by('-created_at')
 
         paginator = Paginator(tasks_list, 5)
 
@@ -36,15 +36,15 @@ def taskList(request, template_name="tasks/list.html"):
 
 
 @login_required
-def taskView(request, pk, template_name="tasks/task.html"):
+def task_view(request, pk, template_name="tasks/task.html"):
     task = get_object_or_404(Task, pk=pk)
     return render(request, template_name, {'task': task})
 
 
 @login_required
-def newTask(request, template_name="tasks/addtask.html"):
+def new_task(request, template_name="tasks/addtask.html"):
     if request.method == 'POST':
-        form = TaskForm(request.POST)
+        form = CorteForm(request.POST)
 
         if form.is_valid():
             task = form.save(commit=False)
@@ -56,17 +56,17 @@ def newTask(request, template_name="tasks/addtask.html"):
 
             return redirect('/')
     else:
-        form = TaskForm()
+        form = CorteForm()
         return render(request, template_name, {'form': form})
 
 
 @login_required
-def editTask(request, pk, template_name="tasks/edittask.html"):
+def edit_task(request, pk, template_name="tasks/edittask.html"):
     task = get_object_or_404(Task, pk=pk)
-    form = TaskForm(instance=task)
+    form = CorteForm(instance=task)
 
     if request.method == 'POST':
-        form = TaskForm(request.POST, instance=task)
+        form = CorteForm(request.POST, instance=task)
 
         if form.is_valid():
             task.save()
@@ -81,7 +81,7 @@ def editTask(request, pk, template_name="tasks/edittask.html"):
 
 
 @login_required
-def deleteTask(request, pk):
+def delete_task(request, pk):
     task = get_object_or_404(Task, pk=pk)
     task.delete()
 
@@ -91,7 +91,7 @@ def deleteTask(request, pk):
 
 
 @login_required
-def changeStatus(request, pk):
+def change_status(request, pk):
     task = get_object_or_404(Task, pk=pk)
 
     if task.done == 'doing':
@@ -110,18 +110,65 @@ def changeStatus(request, pk):
     return redirect('/')
 
 
-def helloWorld(request):
+def hello_world(request):
     return HttpResponse('Hello World!')
 
 
-def yourName(request, name, template_name="tasks/yourname.html"):
+def your_name(request, name, template_name="tasks/yourname.html"):
     return render(request, template_name, {'name': name})
 
 
 @login_required
-def dashBoard(request, template_name="tasks/dashboard.html"):
-    tasksDoneRecently = Task.objects.filter(done='done', updated_at__gt=datetime.datetime.now() - datetime.timedelta(days=30),
-                                            user=request.user).count()
-    tasksDone = Task.objects.filter(done='done', user=request.user).count()
-    tasksDoing = Task.objects.filter(done='doing', user=request.user).count()
-    return render(request, template_name, {'tasksDoneRecently': tasksDoneRecently, 'tasksDone': tasksDone, 'tasksDoing': tasksDoing})
+def dash_board(request, template_name="tasks/dashboard.html"):
+    tasks_done_recently = Task.objects.filter(done='done',
+                                              updated_at__gt=datetime.datetime.now() - datetime.timedelta(days=30),
+                                              user=request.user).count()
+    tasks_done = Task.objects.filter(done='done', user=request.user).count()
+    tasks_doing = Task.objects.filter(done='doing', user=request.user).count()
+    return render(request, template_name,
+                  {'tasksDoneRecently': tasks_done_recently, 'tasksDone': tasks_done, 'tasksDoing': tasks_doing})
+
+
+@login_required
+def tipo_cortes(request, template_name="tipo_cortes/list.html"):
+    tipos_cortes = Corte.objects.all()
+
+    return render(request, template_name, {'tipos': tipos_cortes})
+
+
+@login_required
+def novo_tipo_cortes(request, template_name="tipo_cortes/add_edit_corte.html"):
+    if request.method != 'POST':
+        form = CorteForm()
+        return render(request, template_name, {'form': form})
+
+    form = CorteForm(request.POST)
+    if not form.is_valid():
+        return render(request, template_name, {'form': form})
+
+    corte = form.save(commit=False)
+    corte.save()
+
+    messages.info(request, 'Corte criado com sucesso!')
+
+    return redirect('/tarefas/cortes')
+
+
+@login_required
+def editar_tipo_cortes(request, pk, template_name="tipo_cortes/add_edit_corte.html"):
+    corte = get_object_or_404(Corte, pk=pk)
+    form = CorteForm(instance=corte)
+
+    if request.method == 'POST':
+        form = CorteForm(request.POST, instance=corte)
+
+        if form.is_valid():
+            corte.save()
+
+            messages.info(request, 'Corte editado com sucesso!')
+
+            return redirect('/tarefas/cortes')
+        else:
+            return render(request, template_name, {'form': form, 'corte': corte})
+    else:
+        return render(request, template_name, {'form': form, 'corte': corte})

@@ -1,0 +1,61 @@
+{% extends 'task_base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Cortes{% endblock title %}
+
+{% block content %}
+<h1>Cortes</h1>
+
+
+
+
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Cortes</title> 
+</head> 
+<body> 
+    <form method = "post" enctype="multipart/form-data"> 
+        {% csrf_token %} 
+        {{ form.as_p }} 
+        <button type="submit">Carregar Imagem do corte</button> 
+    </form> 
+    <form action="/novo_corte/" method="post">
+        <label for="team_name">Nome do corte </label>
+        <input id="corte-de-cabelo-masculino-degrade-baixo-57_8" type="text" name="name_field" value="">
+        <input type="submit" value="OK">
+    </form>
+</body> 
+</html>
+
+<div class="box">
+    <a href="https://www.google.com.br/" target="blank">
+    
+    <img src="https://uploaddeimagens.com.br/images/003/824/037/original/2.jpg?1649718631" class="rounded float-left" width="200" >
+    
+    </a>
+    <span> Militar </span>
+
+</div>
+    
+<div class="box">
+    <a href="#">
+    <img src="https://uploaddeimagens.com.br/images/003/824/069/original/corte-de-cabelo-masculino-degrade-baixo-57_8.jpg?1649719714" class="rounded float-left" width="175"/>
+    
+    </a>
+    <span> Undercout </span>
+</div>
+
+<style>
+div.box {
+	
+	display: inline-block;
+}
+</style>
+
+
+
+{% endblock content %}
