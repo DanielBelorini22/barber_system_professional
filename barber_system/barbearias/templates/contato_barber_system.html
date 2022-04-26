@@ -2,11 +2,11 @@
 {% load static %}
 {% load humanize %}
 
-{% block title %}Perfil do Barbearia{% endblock title %}
+{% block title %}Contatos da Barber System{% endblock title %}
 
 {% block content %}
-<div class="row mt-5" id="id_perfil_barbearia" style="padding: 40px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border-radius:
-0.25rem !important; box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.14) !important;">
+<div class="row mt-5" id="id_perfil_barbearia" style="background-color: rgb(160,82,45); padding: 40px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border-radius:
+0.25rem !important; box-shadow: 0 0.125rem 0.25rem  !important;">
     <div class="col-md-4">
         <div class="thumbnail">
             <img src="{{ barbearia.logo.url }}" style="width: 100%"
@@ -15,15 +15,25 @@
 
             </div>
         </div>
+    </div>  
+    <div style="color: rgb(255,255,255)">
+        Contatos Barber System
     </div>
-
-    <div class="col-md-8">
+    <div class="col-md-4">
         <ul class="list-group">
-            <li class="list-group-item">Razão Social: {{ barbearia.razao_social }}</li>
-            <li class="list-group-item">Nome Fantasia: {{ barbearia.nome_fantasia }}</li>
-            <li class="list-group-item">CNPJ: {{ barbearia.cnpj }}</li>
-            <li class="list-group-item">E-mail: {{ barbearia.email }}</li>
-            <li class="list-group-item">Horário de atendimento: {{ barbearia.horario_atendimento }}</li>
+            <li class="list-group-item">Concórdia - SC</li>
+            <li class="list-group-item">
+                <i aria-hidden="true" class="fas fa-map-marked-alt"></i>
+                Rua João Zanardi, Nossa Sra. da Salete, CEP: 89700-396
+            </li>
+            <li class="list-group-item">
+                <i aria-hidden="true" class="fab fa-whatsapp"></i>
+                (49) 9 9999-9999
+            </li>
+            <li class="list-group-item">
+                <i aria-hidden="true" class="fas fa-phone-alt"></i>
+                (49) 3442-9999
+            </li>
             <li class="list-group-item p-3">
                 <a href="{{ barbearia.facebook }}" id="id_facebook" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
                 <a href="{{ barbearia.twitter }}" id="id_twitter"
