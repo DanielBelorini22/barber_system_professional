@@ -3,4 +3,5 @@ pillow
 django-material
 django-material-admin
 mysqlclient
-
+django-crispy-forms
+python-decouple
