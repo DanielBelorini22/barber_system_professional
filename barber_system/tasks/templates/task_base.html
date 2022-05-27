@@ -11,7 +11,9 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 
+    <link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
     <title>{% block title %}{% endblock %}</title>
@@ -19,7 +21,7 @@
 <body>
 <div>
     <nav class="navbar sticky-top navbar-light bg-light fixed-top">
-        <div class="container-fluid">
+        <div class="container">
             {% if user.is_authenticated %}
                 <a class="navbar-brand" href="/">Bem vindo, {{ user }}!</a>
             {% endif %}
@@ -52,8 +54,12 @@
                                     <i class="fa-solid fa-chart-line"></i> Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'tipo-cortes' %}">
+                                <a class="nav-link" href="{% url 'cortes' %}">
                                     <i class="fa-solid fa-scissors"> </i> Cortes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'tipo-cortes' %}">
+                                    <i class="fa-solid fa-person-harassing"> </i> Tipos de cortes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'task-list' %}">
@@ -79,12 +85,14 @@
     </nav>
 
     {% include 'includes/messages.html' %}
-    <main class="container-fluid">
+    <main class="container">
         {% block content %}{% endblock %}
     </main>
 
     <footer class="text-center fixed-bottom">
-        <p>Teste rodape</p>
+        <div class="container">
+            <div>Teste rodape</div>
+        </div>
     </footer>
 </div>
 
@@ -96,6 +104,11 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
 
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+        integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+        crossorigin="anonymous"></script>
+
+<script src="{% static 'js/jquery.datetimepicker.full.min.js' %}"></script>
 <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
