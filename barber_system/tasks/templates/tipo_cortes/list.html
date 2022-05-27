@@ -7,7 +7,7 @@
 {% block content %}
     <div class="titulo">
         <h1>
-            Cortes
+            Tipos de cortes
         </h1>
         <a class="btn btn-dark" href="{% url 'tipo-cortes-novo' %}" role="button">
             Incluir novo
@@ -20,6 +20,8 @@
             <th scope="col">Nome</th>
             <th scope="col">Duração</th>
             <th scope="col">Preço</th>
+            <th scope="col">% de Desconto</th>
+            <th scope="col">Ativo</th>
             <th style="width: 5%"> </th>
             <th style="width: 5%"> </th>
         </tr>
@@ -30,8 +32,19 @@
                 <td>{{ tipo.get_nome_display }}</td>
                 <td>{{ tipo.get_duracao_display }}</td>
                 <td>R$ {{ tipo.preco }}</td>
-                <td><a class="btn btn-dark btn-sm" href="{% url 'tipo-cortes-editar' tipo.id %}" role="button">Editar</a></td>
-                <td><a class="btn btn-danger btn-sm" role="button"><i class="fa-solid fa-trash"></i></a></td>
+                <td>{{ tipo.desconto }}</td>
+                <td>{{ tipo.get_ativo_display }}</td>
+                <td class="text-center">
+                    <a class="btn btn-primary btn-sm " href="{% url 'tipo-cortes-editar' tipo.id %}" role="button">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')"
+                       href="{% url 'tipo-cortes-remover' tipo.id %}">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

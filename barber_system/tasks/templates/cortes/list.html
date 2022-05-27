@@ -1,0 +1,51 @@
+{% extends 'task_base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Listagem dos cortes{% endblock title %}
+
+{% block content %}
+    <div class="titulo">
+        <h1>
+            Cortes
+        </h1>
+        <a class="btn btn-dark" href="{% url 'cortes-novo' %}" role="button">
+            Incluir novo
+        </a>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Cliente</th>
+            <th scope="col">Horário</th>
+            <th scope="col">Observação</th>
+            <th scope="col">Status</th>
+            <th scope="col">Duração</th>
+            <th style="width: 5%"> </th>
+            <th style="width: 5%"> </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for corte in cortes %}
+            <tr>
+                <td>{{ corte.cliente }}</td>
+                <td>{{ corte.horario }}</td>
+                <td>{{ corte.observacao }}</td>
+                <td>{{ corte.get_status_display }}</td>
+                <td>{{ corte.get_duracao_display }} Hrs</td>
+                <td class="text-center">
+                    <a class="btn btn-primary btn-sm " href="{% url 'cortes-editar' corte.id %}" role="button">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')" href="{% url 'cortes-remover' corte.id %}">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
